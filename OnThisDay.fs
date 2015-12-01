@@ -22,6 +22,6 @@ type OnThisDayProvider (config:TypeProviderConfig) as this =
    let providedType = ProvidedTypeDefinition(asm, ns, "OnThisDay", Some typeof<obj>)
    do  providedType.AddXmlDoc(today.ToLongDateString())
    do  providedType.AddMembersDelayed(fun () ->             
-            (today.Month,today.Day) |> getNewsItems |> getProperties
+            (today.Month,today.Day) |> getPage |> getNewsItems |> getProperties
        )
    do  this.AddNamespace(ns, [providedType])
